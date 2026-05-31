@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sanjay Sarella — AI Engineer</title>
+<meta name="description" content="AI Engineer building explainable, production-ready intelligent systems."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dk:#1B1814;
+  --dk2:#232018;
+  --dk3:#2C2820;
+  --card-dk:#1E1B16;
+  --card-dk2:#252118;
+  --lt:#F5F4F2;
+  --lt2:#FFFFFF;
+  --tw:rgba(255,255,255,0.9);
+  --tw2:rgba(255,255,255,0.55);
+  --tw3:rgba(255,255,255,0.25);
+  --tl:#111111;
+  --tl2:#555555;
+  --tl3:#999999;
+  --border-dk:rgba(255,255,255,0.1);
+  --border-lt:rgba(0,0,0,0.09);
+  --r:16px;
+  --r-lg:20px;
+  --f:'Plus Jakarta Sans',-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--dk);color:var(--tl);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(27,24,20,0.95);backdrop-filter:blur(14px);border-color:var(--border-dk)}
+.nav-logo{font-size:1rem;font-weight:700;color:var(--tw);text-decoration:none;letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.04em;color:var(--tw2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--tw)}
+.nav-cta{font-size:0.75rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--tl);background:var(--lt2);text-decoration:none;padding:.5rem 1.3rem;border-radius:3px;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--tw)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--dk);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1.8rem;font-weight:700;color:var(--tw);text-decoration:none;letter-spacing:-0.03em}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--dk)}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center, transparent 30%, rgba(27,24,20,0.7) 100%);pointer-events:none}
+.hero-content{position:relative;z-index:2;text-align:center;padding:9rem 2rem 4rem;max-width:860px}
+.hero-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--tw2);margin-bottom:1.8rem;animation:fadeUp .7s ease both}
+h1{font-size:clamp(2.8rem,6.5vw,5.5rem);font-weight:700;color:var(--tw);line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.5rem;animation:fadeUp .7s .08s ease both}
+.hero-sub{font-size:1.05rem;font-weight:300;color:var(--tw2);line-height:1.8;max-width:560px;margin:0 auto 2.8rem;animation:fadeUp .7s .15s ease both}
+.hero-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .22s ease both}
+.btn-white{padding:.82rem 2rem;background:var(--lt2);color:var(--tl);font-family:var(--f);font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:opacity .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-white:hover{opacity:.88}
+.btn-ghost-w{padding:.82rem 2rem;background:transparent;color:var(--tw);font-family:var(--f);font-size:0.8rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--tw3);border-radius:3px;transition:border-color .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost-w:hover{border-color:rgba(255,255,255,0.5)}
+.hero-stats{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;gap:0;border:1px solid var(--border-dk);border-radius:10px;overflow:hidden;animation:fadeUp .7s .3s ease both;backdrop-filter:blur(8px);background:rgba(255,255,255,0.04)}
+.hstat{padding:1rem 2rem;text-align:center;border-right:1px solid var(--border-dk)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-size:1.6rem;font-weight:700;color:var(--tw);letter-spacing:-0.03em;line-height:1}
+.hstat-l{font-size:0.68rem;font-weight:500;color:var(--tw2);letter-spacing:0.04em;margin-top:.2rem;text-transform:uppercase}
+
+/* ── SHARED ── */
+.sec{padding:7rem 3rem}
+.sec-inner{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--tw2);margin-bottom:.9rem}
+.eyebrow-dk{color:var(--tl3)}
+h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em}
+h2.on-dark{color:var(--tw)}
+h2.on-light{color:var(--tl)}
+.sec-sub{font-size:0.95rem;font-weight:300;line-height:1.85;max-width:480px}
+.sec-sub.on-dark{color:var(--tw2)}
+.sec-sub.on-light{color:var(--tl2)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ABOUT (dark) ── */
+#about{background:var(--dk2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{font-size:0.93rem;font-weight:300;color:var(--tw2);line-height:1.95;margin-bottom:1.1rem}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{font-weight:700;color:var(--tw)}
+.about-visual{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.av-card{background:var(--card-dk2);border:1px solid var(--border-dk);border-radius:var(--r);padding:1.5rem;transition:background .2s}
+.av-card:hover{background:var(--dk3)}
+.av-card-icon{font-size:1.4rem;margin-bottom:.7rem}
+.av-card-num{font-size:1.8rem;font-weight:700;color:var(--tw);letter-spacing:-0.03em;line-height:1;margin-bottom:.25rem}
+.av-card-lbl{font-size:0.72rem;font-weight:500;color:var(--tw2);letter-spacing:0.03em}
+.av-card.wide{grid-column:1/3}
+
+/* ── CAPABILITIES (light) ── */
+#capabilities{background:var(--lt)}
+.cap-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.cap-card{background:var(--card-dk);border-radius:var(--r-lg);padding:2rem;overflow:hidden;position:relative;transition:transform .25s;cursor:default}
+.cap-card:hover{transform:translateY(-3px)}
+.cap-card-art{margin-bottom:1.4rem;height:88px;display:flex;align-items:center}
+.cap-card h3{font-size:0.95rem;font-weight:700;color:var(--tw);margin-bottom:.6rem;letter-spacing:-0.01em}
+.cap-card p{font-size:0.79rem;font-weight:300;color:var(--tw2);line-height:1.78;margin-bottom:.9rem}
+.cap-card-tools{display:flex;flex-wrap:wrap;gap:.3rem}
+.ctag{font-size:0.63rem;font-weight:600;padding:.2rem .6rem;border:1px solid var(--border-dk);color:rgba(255,255,255,0.35);border-radius:3px;letter-spacing:0.02em}
+
+/* ── PROJECTS (light) ── */
+#projects{background:var(--lt2)}
+.proj-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.proj-card{background:var(--card-dk);border-radius:var(--r-lg);overflow:hidden;transition:transform .25s;cursor:default}
+.proj-card:hover{transform:translateY(-4px)}
+.proj-card-visual{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--card-dk2)}
+.proj-card-body{padding:1.6rem}
+.proj-card-meta{display:flex;align-items:center;gap:.5rem;margin-bottom:.55rem;flex-wrap:wrap}
+.proj-tag{font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:.18rem .65rem;border:1px solid var(--border-dk);border-radius:3px}
+.proj-live{font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:4px}
+.proj-live::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:#6EE7B7}
+.proj-card h3{font-size:1rem;font-weight:700;color:var(--tw);letter-spacing:-0.02em;margin-bottom:.5rem;line-height:1.2}
+.proj-card p{font-size:0.8rem;font-weight:300;color:var(--tw2);line-height:1.75;margin-bottom:1.1rem}
+.proj-card-foot{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;border-top:1px solid var(--border-dk);flex-wrap:wrap;gap:.5rem}
+.proj-stack{display:flex;gap:.28rem;flex-wrap:wrap}
+.stag{font-size:0.6rem;font-weight:600;padding:.16rem .55rem;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.3);border-radius:2px}
+.proj-lnks{display:flex;gap:.4rem}
+.proj-lnks a{font-size:0.7rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;padding:.38rem .85rem;border-radius:3px;transition:opacity .2s;white-space:nowrap}
+.pl-live{background:var(--lt2);color:var(--tl)}
+.pl-live:hover{opacity:.85}
+.pl-gh{border:1.5px solid var(--border-dk);color:var(--tw2)}
+.pl-gh:hover{border-color:rgba(255,255,255,0.4);color:var(--tw)}
+
+/* ── CONTACT (dark) ── */
+#contact{background:var(--dk)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:6rem;align-items:start}
+.contact-text{font-size:0.9rem;font-weight:300;color:var(--tw2);line-height:1.9;margin-bottom:2rem}
+.clinks{display:flex;flex-direction:column;gap:.55rem}
+.clink{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:var(--tw);font-size:0.82rem;font-weight:500;padding:.85rem 1.1rem;border:1px solid var(--border-dk);border-radius:var(--r);background:rgba(255,255,255,0.03);transition:background .2s,border-color .2s}
+.clink:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.2)}
+.clink-icon{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0}
+.cform{background:rgba(255,255,255,0.04);border:1px solid var(--border-dk);border-radius:var(--r-lg);padding:2.4rem}
+.form-row{margin-bottom:1.1rem}
+.form-row label{display:block;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--tw2);margin-bottom:.4rem}
+.form-row input,.form-row textarea{width:100%;padding:.78rem 1rem;border:1px solid var(--border-dk);background:rgba(255,255,255,0.05);font-family:var(--f);font-size:0.85rem;color:var(--tw);outline:none;resize:vertical;border-radius:8px;transition:border-color .2s}
+.form-row input:focus,.form-row textarea:focus{border-color:rgba(255,255,255,0.35)}
+.form-row input::placeholder,.form-row textarea::placeholder{color:var(--tw3)}
+.form-row textarea{min-height:108px}
+.form-submit{width:100%;padding:.88rem;background:var(--lt2);color:var(--tl);font-family:var(--f);font-size:0.8rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .2s;border-radius:8px}
+.form-submit:hover{opacity:.88}
+
+/* ── FOOTER ── */
+footer{background:#131210;color:rgba(255,255,255,0.3);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;font-weight:500;letter-spacing:0.04em}
+.footer-name{font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:-0.02em}
+footer a{color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s}
+footer a:hover{color:rgba(255,255,255,0.6)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  nav{padding:1rem 1.5rem}.nav-links,.nav-cta{display:none}.hamburger{display:flex}
+  .sec{padding:5rem 1.5rem}
+  .about-grid,.cap-header,.proj-header,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .cap-grid{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .hero-stats{position:relative;bottom:auto;left:auto;transform:none;margin-top:2.5rem;flex-wrap:wrap}
+  .hstat{flex:1 1 120px}
+  #hero{flex-direction:column;justify-content:center;padding-bottom:2rem}
+  .hero-content{padding-bottom:1rem}
+}
+@media(max-width:640px){
+  .cap-grid{grid-template-columns:1fr}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:.6rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Sanjay Sarella</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#capabilities" onclick="toggleMenu()">Capabilities</a>
+  <a href="#projects" onclick="toggleMenu()">Projects</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI Engineer &amp; Data Analytics &mdash; Oklahoma City University, M.S.</div>
+    <h1>Building AI that is<br>honest and ships.</h1>
+    <p class="hero-sub">End-to-end intelligent systems &mdash; agentic pipelines, explainable ML with SHAP attribution, and RAG architectures grounded in real data. Four projects live in production on GCP.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-white">View Projects &rarr;</a>
+      <a href="#contact" class="btn-ghost-w">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Live Apps</div></div>
+      <div class="hstat"><div class="hstat-n">421K</div><div class="hstat-l">Records Tested</div></div>
+      <div class="hstat"><div class="hstat-n">6+</div><div class="hstat-l">AI Frameworks</div></div>
+      <div class="hstat"><div class="hstat-n">M.S.</div><div class="hstat-l">Data Analytics</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="eyebrow">About Sanjay</div>
+        <h2 class="on-dark" style="margin-bottom:1.4rem">AI that explains<br>itself is AI<br>you can trust</h2>
+        <div class="about-text">
+          <p>I am an AI Engineer with a Master&rsquo;s in Data Analytics from Oklahoma City University. My focus is building intelligent systems that are <strong>production-ready and explainable</strong> &mdash; not just accurate.</p>
+          <p>Every predictive model I build is paired with <strong>SHAP attribution</strong> so stakeholders see exactly what drives each output. Every agentic pipeline uses Pydantic-typed state, structured reflection loops, and cited retrieval &mdash; so outputs trace back to their sources.</p>
+          <p>I am comfortable across the full stack: LangGraph workflows, RAG pipelines over real data, ML model training, and containerised FastAPI services on GCP Cloud Run. All four projects on this page are <strong>live and publicly accessible</strong>.</p>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="av-card">
+          <div class="av-card-icon">&#128301;</div>
+          <div class="av-card-num">4</div>
+          <div class="av-card-lbl">Live AI applications on GCP Cloud Run</div>
+        </div>
+        <div class="av-card">
+          <div class="av-card-icon">&#128202;</div>
+          <div class="av-card-num">421K+</div>
+          <div class="av-card-lbl">Real records across backtested datasets</div>
+        </div>
+        <div class="av-card">
+          <div class="av-card-icon">&#129504;</div>
+          <div class="av-card-num">6+</div>
+          <div class="av-card-lbl">Agent frameworks used in production</div>
+        </div>
+        <div class="av-card">
+          <div class="av-card-icon">&#127891;</div>
+          <div class="av-card-num">M.S.</div>
+          <div class="av-card-lbl">Data Analytics &middot; Oklahoma City University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="sec">
+  <div class="sec-inner">
+    <div class="cap-header">
+      <div class="reveal">
+        <div class="eyebrow eyebrow-dk">Capabilities</div>
+        <h2 class="on-light">What I build,<br>and why it matters</h2>
+      </div>
+      <p class="sec-sub on-light reveal">Not just tools I know &mdash; patterns I apply to solve specific problems in production AI systems.</p>
+    </div>
+    <div class="cap-grid">
+
+      <div class="cap-card reveal">
+        <div class="cap-card-art">
+          <svg viewBox="0 0 220 80" width="220" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="40" r="10" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <circle cx="80" cy="20" r="10" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <circle cx="80" cy="60" r="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <circle cx="150" cy="40" r="10" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+            <circle cx="205" cy="40" r="10" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+            <line x1="30" y1="38" x2="70" y2="23" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="30" y1="42" x2="70" y2="57" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="90" y1="22" x2="140" y2="38" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="90" y1="58" x2="140" y2="42" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+            <line x1="160" y1="40" x2="195" y2="40" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+            <text x="14" y="44" fill="rgba(255,255,255,0.5)" font-size="7" font-family="monospace">IN</text>
+            <text x="196" y="44" fill="rgba(255,255,255,0.7)" font-size="7" font-family="monospace">OUT</text>
+          </svg>
+        </div>
+        <h3>Agentic Pipeline Design</h3>
+        <p>Multi-node LangGraph workflows with typed state, defined failure modes, and Critic Agent loops that catch low-quality outputs before delivery.</p>
+        <div class="cap-card-tools"><span class="ctag">LangGraph</span><span class="ctag">CrewAI</span><span class="ctag">AutoGen</span><span class="ctag">Pydantic AI</span><span class="ctag">MCP</span></div>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-card-art">
+          <svg viewBox="0 0 220 80" width="220" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="28" width="80" height="10" rx="2" fill="rgba(110,231,183,0.35)"/>
+            <rect x="10" y="43" width="55" height="10" rx="2" fill="rgba(110,231,183,0.2)"/>
+            <rect x="10" y="13" width="40" height="10" rx="2" fill="rgba(255,150,100,0.3)"/>
+            <rect x="10" y="58" width="30" height="10" rx="2" fill="rgba(255,150,100,0.2)"/>
+            <line x1="10" y1="40" x2="200" y2="40" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2,4"/>
+            <text x="95" y="37" fill="rgba(110,231,183,0.8)" font-size="9" font-family="monospace" font-weight="700">+0.82</text>
+            <text x="70" y="52" fill="rgba(255,255,255,0.4)" font-size="9" font-family="monospace">+0.55</text>
+            <text x="55" y="22" fill="rgba(255,120,80,0.7)" font-size="9" font-family="monospace">&#8722;0.31</text>
+            <text x="45" y="67" fill="rgba(255,120,80,0.5)" font-size="9" font-family="monospace">&#8722;0.18</text>
+            <text x="155" y="37" fill="rgba(255,255,255,0.25)" font-size="8" font-family="monospace">SHAP</text>
+          </svg>
+        </div>
+        <h3>Explainable Prediction</h3>
+        <p>Every classifier ships with SHAP attribution — waterfall charts, ranked drivers, plain-English summaries. A score without an explanation is just a number.</p>
+        <div class="cap-card-tools"><span class="ctag">XGBoost</span><span class="ctag">SHAP</span><span class="ctag">Random Forest</span><span class="ctag">Prophet</span><span class="ctag">scikit-learn</span></div>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-card-art">
+          <svg viewBox="0 0 220 80" width="220" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="20" width="44" height="40" rx="4" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <line x1="14" y1="30" x2="46" y2="30" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <line x1="14" y1="37" x2="46" y2="37" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <line x1="14" y1="44" x2="36" y2="44" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="14" y="58" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">DOCS</text>
+            <path d="M62 40 L90 40" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arr)"/>
+            <rect x="92" y="24" width="38" height="32" rx="20" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="98" y="43" fill="rgba(255,255,255,0.5)" font-size="8" font-family="monospace">VDB</text>
+            <path d="M140 40 L168 40" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <rect x="170" y="20" width="44" height="40" rx="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+            <text x="176" y="38" fill="rgba(255,255,255,0.6)" font-size="8" font-family="monospace">LLM</text>
+            <text x="174" y="50" fill="rgba(255,255,255,0.35)" font-size="7" font-family="monospace">+RAG</text>
+          </svg>
+        </div>
+        <h3>RAG &amp; Knowledge Grounding</h3>
+        <p>Retrieval-augmented pipelines that anchor LLM outputs in real, source-cited evidence. Every brief is grounded in actual historical records — not weights alone.</p>
+        <div class="cap-card-tools"><span class="ctag">ChromaDB</span><span class="ctag">Pinecone</span><span class="ctag">Weaviate</span><span class="ctag">LlamaIndex</span><span class="ctag">RAGAS</span></div>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-card-art">
+          <svg viewBox="0 0 220 80" width="220" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="30" width="30" height="24" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="13" y="46" fill="rgba(255,255,255,0.45)" font-size="7" font-family="monospace">SQL</text>
+            <path d="M38 42 L54 42" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="2,2"/>
+            <rect x="55" y="28" width="34" height="28" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="59" y="40" fill="rgba(255,255,255,0.4)" font-size="7" font-family="monospace">ETL</text>
+            <text x="59" y="50" fill="rgba(255,255,255,0.25)" font-size="6" font-family="monospace">dbt</text>
+            <path d="M89 42 L105 42" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="2,2"/>
+            <rect x="106" y="28" width="34" height="28" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="110" y="40" fill="rgba(255,255,255,0.4)" font-size="7" font-family="monospace">DWH</text>
+            <text x="107" y="50" fill="rgba(255,255,255,0.25)" font-size="6" font-family="monospace">Snow</text>
+            <path d="M140 42 L156 42" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="2,2"/>
+            <rect x="157" y="24" width="55" height="36" rx="4" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <rect x="163" y="30" width="8" height="18" rx="1" fill="rgba(255,255,255,0.3)"/>
+            <rect x="173" y="36" width="8" height="12" rx="1" fill="rgba(255,255,255,0.2)"/>
+            <rect x="183" y="33" width="8" height="15" rx="1" fill="rgba(255,255,255,0.25)"/>
+            <rect x="193" y="29" width="8" height="19" rx="1" fill="rgba(255,255,255,0.35)"/>
+            <text x="162" y="56" fill="rgba(255,255,255,0.25)" font-size="6" font-family="monospace">Power BI</text>
+          </svg>
+        </div>
+        <h3>Data Engineering &amp; Analytics</h3>
+        <p>ETL/ELT pipelines, complex SQL, Power BI and Tableau dashboards, and data quality validation — so analysis is built on a sound foundation.</p>
+        <div class="cap-card-tools"><span class="ctag">PySpark</span><span class="ctag">dbt</span><span class="ctag">Snowflake</span><span class="ctag">Power BI</span><span class="ctag">Airflow</span></div>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-card-art">
+          <svg viewBox="0 0 220 80" width="220" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="8" width="160" height="60" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4,3"/>
+            <text x="95" y="22" fill="rgba(255,255,255,0.2)" font-size="7" font-family="monospace">GCP Cloud Run</text>
+            <rect x="45" y="28" width="50" height="30" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="52" y="42" fill="rgba(255,255,255,0.5)" font-size="8" font-family="monospace">Docker</text>
+            <text x="50" y="52" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">FastAPI</text>
+            <path d="M95 43 L120 43" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+            <rect x="120" y="28" width="50" height="30" rx="4" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <text x="127" y="42" fill="rgba(255,255,255,0.6)" font-size="8" font-family="monospace">Model</text>
+            <text x="126" y="52" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">Serving</text>
+            <circle cx="12" cy="20" r="6" fill="rgba(110,231,183,0.3)" stroke="rgba(110,231,183,0.6)" stroke-width="1"/>
+            <text x="7" y="24" fill="rgba(110,231,183,0.8)" font-size="7" font-family="monospace">&#10003;</text>
+          </svg>
+        </div>
+        <h3>Cloud Deployment &amp; MLOps</h3>
+        <p>Systems taken from notebook to production — containerised, deployed on GCP or AWS, monitored, and accessible. All four projects are live today.</p>
+        <div class="cap-card-tools"><span class="ctag">GCP Cloud Run</span><span class="ctag">Docker</span><span class="ctag">FastAPI</span><span class="ctag">GitHub Actions</span><span class="ctag">Kubernetes</span></div>
+      </div>
+
+      <div class="cap-card reveal">
+        <div class="cap-card-art">
+          <svg viewBox="0 0 220 80" width="220" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="15" width="65" height="22" rx="11" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <text x="18" y="30" fill="rgba(255,255,255,0.5)" font-size="9" font-family="monospace">Prompt</text>
+            <rect x="8" y="44" width="65" height="22" rx="11" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <text x="12" y="59" fill="rgba(255,255,255,0.65)" font-size="9" font-family="monospace">Response</text>
+            <rect x="100" y="10" width="112" height="60" rx="6" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <text x="114" y="26" fill="rgba(255,255,255,0.4)" font-size="7" font-family="monospace">LLM + Guards</text>
+            <rect x="110" y="30" width="40" height="14" rx="3" fill="rgba(255,120,80,0.15)" stroke="rgba(255,120,80,0.3)" stroke-width="1"/>
+            <text x="114" y="41" fill="rgba(255,120,80,0.7)" font-size="7" font-family="monospace">Guardrail</text>
+            <rect x="158" y="30" width="40" height="14" rx="3" fill="rgba(110,231,183,0.12)" stroke="rgba(110,231,183,0.25)" stroke-width="1"/>
+            <text x="163" y="41" fill="rgba(110,231,183,0.6)" font-size="7" font-family="monospace">RAGAS</text>
+            <path d="M73 26 L100 35" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="2,2"/>
+            <path d="M100 52 L73 55" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="2,2"/>
+            <text x="110" y="58" fill="rgba(255,255,255,0.2)" font-size="6.5" font-family="monospace">Critic Agent</text>
+          </svg>
+        </div>
+        <h3>LLM Integration &amp; Safety</h3>
+        <p>Context window management, structured prompt design, and evaluation layers using NeMo Guardrails, RAGAS, and Critic Agent patterns to catch quality issues before delivery.</p>
+        <div class="cap-card-tools"><span class="ctag">GPT-4</span><span class="ctag">Claude</span><span class="ctag">Groq LLaMA</span><span class="ctag">NeMo Guardrails</span><span class="ctag">RAGAS</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <div class="sec-inner">
+    <div class="proj-header">
+      <div class="reveal">
+        <div class="eyebrow eyebrow-dk">Projects</div>
+        <h2 class="on-light">Four systems,<br>all live in production</h2>
+      </div>
+      <p class="sec-sub on-light reveal">Deployed on GCP Cloud Run. All data is real — SEC EDGAR, USASpending.gov, Walmart sales, and financial services records.</p>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-card-visual">
+          <svg viewBox="0 0 340 180" width="340" height="180" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+            <rect width="340" height="180" fill="#1B1814"/>
+            <circle cx="170" cy="90" r="70" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <circle cx="170" cy="90" r="55" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <path d="M170 20 A70 70 0 1 1 100 157" stroke="rgba(255,150,100,0.5)" stroke-width="3" stroke-linecap="round"/>
+            <text x="150" y="82" fill="rgba(255,255,255,0.9)" font-size="36" font-weight="700" font-family="system-ui" letter-spacing="-2">89</text>
+            <text x="157" y="102" fill="rgba(255,255,255,0.35)" font-size="11" font-family="system-ui">/100</text>
+            <text x="120" y="136" fill="rgba(255,255,255,0.25)" font-size="9" font-family="system-ui">DISTRESS SCORE</text>
+            <text x="20" y="24" fill="rgba(255,255,255,0.15)" font-size="8" font-family="monospace">ORION v2.4</text>
+            <rect x="240" y="20" width="80" height="50" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <text x="248" y="34" fill="rgba(255,255,255,0.25)" font-size="7" font-family="monospace">Enron</text>
+            <rect x="248" y="38" width="60" height="4" rx="1" fill="rgba(255,150,100,0.4)"/>
+            <text x="248" y="50" fill="rgba(255,255,255,0.25)" font-size="7" font-family="monospace">Lehman</text>
+            <rect x="248" y="54" width="66" height="4" rx="1" fill="rgba(255,150,100,0.5)"/>
+            <text x="248" y="62" fill="rgba(255,255,255,0.15)" font-size="6" font-family="monospace">94/100</text>
+          </svg>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-meta"><span class="proj-tag">Agentic AI &middot; FinTech</span><span class="proj-live">Live</span></div>
+          <h3>ORION &mdash; Corporate Distress Intelligence</h3>
+          <p>Reads SEC EDGAR filings, computes 12 distress parameters across 8 quarters, and delivers four role-specific briefs in under 3 minutes for 10,247 US companies. Backtested on Enron, Lehman, WeWork, and more.</p>
+          <div class="proj-card-foot">
+            <div class="proj-stack"><span class="stag">LangGraph</span><span class="stag">Groq</span><span class="stag">ChromaDB</span><span class="stag">FastAPI</span><span class="stag">GCP</span></div>
+            <div class="proj-lnks">
+              <a href="https://orion-frontend-1027936947898.us-central1.run.app" target="_blank" class="pl-live">Live &nearr;</a>
+              <a href="https://github.com/SanjaySarella/ORION" target="_blank" class="pl-gh">GitHub &nearr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-card-visual">
+          <svg viewBox="0 0 340 180" width="340" height="180" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+            <rect width="340" height="180" fill="#0D1A14"/>
+            <text x="24" y="56" fill="rgba(255,255,255,0.8)" font-size="40" font-weight="700" font-family="system-ui" letter-spacing="-2">0.82</text>
+            <text x="24" y="74" fill="rgba(255,255,255,0.25)" font-size="10" font-family="system-ui" letter-spacing="0.1em">ROC-AUC SCORE</text>
+            <rect x="24" y="90" width="100" height="6" rx="3" fill="rgba(110,231,183,0.2)"/>
+            <rect x="24" y="90" width="82" height="6" rx="3" fill="rgba(110,231,183,0.55)"/>
+            <text x="24" y="118" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">SHAP TOP FACTORS</text>
+            <rect x="24" y="124" width="75" height="5" rx="1" fill="rgba(110,231,183,0.4)"/>
+            <text x="104" y="129" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">contract_value</text>
+            <rect x="24" y="134" width="55" height="5" rx="1" fill="rgba(110,231,183,0.3)"/>
+            <text x="84" y="139" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">tenure_months</text>
+            <rect x="24" y="144" width="38" height="5" rx="1" fill="rgba(255,150,100,0.35)"/>
+            <text x="66" y="149" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">support_calls &#8722;</text>
+            <path d="M200 160 Q220 100 240 120 Q260 140 280 80 Q300 40 320 50" stroke="rgba(110,231,183,0.4)" stroke-width="2" fill="none"/>
+            <path d="M200 160 Q220 130 240 140 Q260 150 280 110 Q300 80 320 90" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="3,3" fill="none"/>
+            <text x="200" y="172" fill="rgba(255,255,255,0.15)" font-size="8" font-family="monospace">ROC Curve</text>
+          </svg>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-meta"><span class="proj-tag">ML &middot; Retention &middot; FinServ</span><span class="proj-live">Live</span></div>
+          <h3>Churn Intelligence &mdash; Customer Retention</h3>
+          <p>Predicts churn risk, ranks the exact SHAP-attributed factors driving it, and generates a targeted retention brief in under 10 seconds from a single customer profile input.</p>
+          <div class="proj-card-foot">
+            <div class="proj-stack"><span class="stag">XGBoost</span><span class="stag">SHAP</span><span class="stag">LangGraph</span><span class="stag">ChromaDB</span><span class="stag">GCP</span></div>
+            <div class="proj-lnks">
+              <a href="https://churn-intelligence-app-1027936947898.us-central1.run.app" target="_blank" class="pl-live">Live &nearr;</a>
+              <a href="https://github.com/SanjaySarella/Customer-Churn-Prediction-Retention-Intelligence" target="_blank" class="pl-gh">GitHub &nearr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-card-visual">
+          <svg viewBox="0 0 340 180" width="340" height="180" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+            <rect width="340" height="180" fill="#141820"/>
+            <text x="24" y="56" fill="rgba(255,255,255,0.8)" font-size="40" font-weight="700" font-family="system-ui" letter-spacing="-2">0.74</text>
+            <text x="24" y="74" fill="rgba(255,255,255,0.25)" font-size="10" font-family="system-ui" letter-spacing="0.1em">ROC-AUC SCORE</text>
+            <text x="24" y="100" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">SHAP WATERFALL</text>
+            <line x1="24" y1="106" x2="310" y2="106" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <rect x="120" y="110" width="55" height="10" rx="1" fill="rgba(201,168,76,0.5)"/>
+            <text x="24" y="119" fill="rgba(255,255,255,0.25)" font-size="7" font-family="monospace">vendor_exp</text>
+            <rect x="100" y="124" width="40" height="10" rx="1" fill="rgba(201,168,76,0.35)"/>
+            <text x="24" y="133" fill="rgba(255,255,255,0.25)" font-size="7" font-family="monospace">award_amt</text>
+            <rect x="110" y="138" width="25" height="10" rx="1" fill="rgba(255,150,100,0.35)"/>
+            <text x="24" y="147" fill="rgba(255,255,255,0.25)" font-size="7" font-family="monospace">agency_type</text>
+            <rect x="110" y="152" width="18" height="10" rx="1" fill="rgba(255,150,100,0.25)"/>
+            <text x="24" y="161" fill="rgba(255,255,255,0.25)" font-size="7" font-family="monospace">duration</text>
+            <text x="200" y="100" fill="rgba(255,255,255,0.12)" font-size="7" font-family="monospace">969 contracts</text>
+            <text x="200" y="112" fill="rgba(255,255,255,0.12)" font-size="7" font-family="monospace">USASpending.gov</text>
+          </svg>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-meta"><span class="proj-tag">ML &middot; GovTech &middot; Consulting</span><span class="proj-live">Live</span></div>
+          <h3>Federal Contract Win Rate Intelligence</h3>
+          <p>Calculates win probability before a proposal is written. Returns a SHAP waterfall of every influencing factor and a four-recommendation strategy brief from 969 real contract outcomes.</p>
+          <div class="proj-card-foot">
+            <div class="proj-stack"><span class="stag">Random Forest</span><span class="stag">SHAP</span><span class="stag">LangGraph</span><span class="stag">ChromaDB</span><span class="stag">GCP</span></div>
+            <div class="proj-lnks">
+              <a href="https://federal-contract-app-1027936947898.us-central1.run.app" target="_blank" class="pl-live">Live &nearr;</a>
+              <a href="https://github.com/SanjaySarella/Proposal-win-rate" target="_blank" class="pl-gh">GitHub &nearr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-card-visual">
+          <svg viewBox="0 0 340 180" width="340" height="180" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+            <rect width="340" height="180" fill="#1A1220"/>
+            <text x="24" y="50" fill="rgba(255,255,255,0.8)" font-size="34" font-weight="700" font-family="system-ui" letter-spacing="-2">421K</text>
+            <text x="24" y="67" fill="rgba(255,255,255,0.25)" font-size="10" font-family="system-ui" letter-spacing="0.1em">WEEKLY SALES RECORDS</text>
+            <text x="24" y="88" fill="rgba(255,255,255,0.2)" font-size="8" font-family="monospace">DEMAND FORECAST &#8212; Store 14, Dept Electronics</text>
+            <polyline points="24,155 50,148 76,140 102,145 128,132 154,118 180,125 206,110 232,98 258,105 284,88 310,80" stroke="rgba(200,127,255,0.6)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <polyline points="24,155 50,150 76,145 102,148 128,138 154,128 180,133 206,120 232,112 258,118 284,102 310,95" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="3,3" fill="none" stroke-linejoin="round"/>
+            <line x1="24" y1="158" x2="310" y2="158" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <rect x="240" y="24" width="70" height="28" rx="4" fill="rgba(200,127,255,0.1)" stroke="rgba(200,127,255,0.2)" stroke-width="1"/>
+            <text x="248" y="36" fill="rgba(200,127,255,0.7)" font-size="7" font-family="monospace">STOCKOUT RISK</text>
+            <text x="248" y="47" fill="rgba(255,255,255,0.5)" font-size="8" font-family="monospace">&#9650; HIGH</text>
+          </svg>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-meta"><span class="proj-tag">Forecasting &middot; Retail &middot; Supply Chain</span><span class="proj-live">Live</span></div>
+          <h3>Retail Demand Forecasting &mdash; AI System</h3>
+          <p>Forecasts weekly store demand, flags stockout-risk departments, generates reorder quantities and purchase orders, and delivers an executive brief — from a single Run Analysis click.</p>
+          <div class="proj-card-foot">
+            <div class="proj-stack"><span class="stag">Prophet</span><span class="stag">XGBoost</span><span class="stag">SHAP</span><span class="stag">LangGraph</span><span class="stag">Power BI</span></div>
+            <div class="proj-lnks">
+              <a href="https://retail-demand-app-1027936947898.us-central1.run.app" target="_blank" class="pl-live">Live &nearr;</a>
+              <a href="https://github.com/SanjaySarella/Retail-demand-forecasting" target="_blank" class="pl-gh">GitHub &nearr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">Contact</div>
+        <h2 class="on-dark" style="margin-bottom:1rem">Open to the<br>right opportunity</h2>
+        <p class="contact-text">Looking for AI Engineer and Data Analytics roles where building production-ready, explainable systems is what matters. Open to full-time positions, contract work, and research collaboration.</p>
+        <div class="clinks">
+          <a href="mailto:sanjaysarella11@gmail.com" class="clink"><div class="clink-icon">&#9993;</div>sanjaysarella11@gmail.com</a>
+          <a href="https://www.linkedin.com/in/sanjaysarella" target="_blank" class="clink"><div class="clink-icon" style="font-size:.65rem;font-weight:700">in</div>linkedin.com/in/sanjaysarella</a>
+          <a href="https://github.com/SanjaySarella" target="_blank" class="clink"><div class="clink-icon" style="font-size:.65rem;font-weight:700">gh</div>github.com/SanjaySarella</a>
+          <a href="https://orion-frontend-1027936947898.us-central1.run.app" target="_blank" class="clink"><div class="clink-icon">&#8599;</div>ORION &mdash; live platform</a>
+        </div>
+      </div>
+      <div class="cform reveal">
+        <div class="form-row"><label for="fname">Name</label><input type="text" id="fname" placeholder="Jane Smith"/></div>
+        <div class="form-row"><label for="femail">Email</label><input type="email" id="femail" placeholder="jane@company.com"/></div>
+        <div class="form-row"><label for="fmsg">Message</label><textarea id="fmsg" placeholder="Tell me about the role or project..."></textarea></div>
+        <button class="form-submit" onclick="handleSubmit()">Send Message &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Sanjay Sarella</div>
+  <div>M.S. Data Analytics &middot; Oklahoma City University</div>
+  <a href="https://pages.github.com" target="_blank">Hosted free on GitHub Pages</a>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
+});
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const p=e.target.closest('.cap-grid,.proj-grid,.about-visual');
+      const d=p?Array.from(p.children).indexOf(e.target)*80:0;
+      setTimeout(()=>e.target.classList.add('visible'),d);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+(function(){
+  const cv=document.getElementById('hero-canvas');
+  const ctx=cv.getContext('2d');
+  let W,H,pts;
+  const N=70;
+  function rs(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;}
+  function init(){
+    pts=Array.from({length:N},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,
+      r:Math.random()*1.8+.8
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<N;i++){
+      for(let j=i+1;j<N;j++){
+        const a=pts[i],b=pts[j];
+        const d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<130){
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(255,255,255,${(1-d/130)*0.1})`;
+          ctx.lineWidth=.6;
+          ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    pts.forEach(p=>{
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.18)';ctx.fill();
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{rs();init();});
+  rs();init();draw();
+})();
+
+function handleSubmit(){
+  const n=document.getElementById('fname').value.trim();
+  const e=document.getElementById('femail').value.trim();
+  const m=document.getElementById('fmsg').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields.');return;}
+  alert('Thanks '+n+' \u2014 message received. I will be in touch.');
+  document.getElementById('fname').value='';
+  document.getElementById('femail').value='';
+  document.getElementById('fmsg').value='';
+}
+</script>
+</body>
+</html>
