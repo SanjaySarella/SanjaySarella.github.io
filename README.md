@@ -11,7 +11,7 @@ A static personal portfolio focused on business experience and applied analytics
 - `assets/Sanjay_Sarella_Resume.pdf`: a PDF exported from the supplied resume.
 - `favicon.svg`: a small text-based site icon.
 
-Sections: Home, About, Skills, Experience, Projects, Education, and Contact. The five projects appear in this order: Agentic Excel Analyst, Retail Demand Forecasting, Customer Churn Intelligence, Federal Contract Intelligence, and ORION.
+Sections: Home, About, Skills, Experience, Projects, Education, and Contact. Featured work appears in this order: Agentic Excel Analyst, Retail Sales Forecasting, and Customer Churn Decision Analysis. Federal Award Record Research appears as additional work. ORION is withheld until its analytical claims and outputs complete a separate validation review.
 
 ## Local preview
 
