@@ -137,11 +137,11 @@
           </div>
           <div class="about-text">
             <p>
-              My background combines Data Analytics with hands-on experience in
-              procurement and supply-chain operations. Working with budgeting,
-              forecasting, purchasing trends, suppliers, and management
-              reporting taught me to focus on information people can actually
-              use.
+              I am a data analyst with a Master of Science in Data Analytics
+              and experience turning operational records, spreadsheets, and
+              public datasets into validated analysis. I focus on clear
+              definitions, reproducible calculations, and findings that a
+              stakeholder can inspect before making a decision.
             </p>
             <p>
               I hold a Master of Science in Data Analytics from Oklahoma City
@@ -150,9 +150,10 @@
               machine learning.
             </p>
             <p>
-              My applied projects explore retail, customer retention,
-              procurement, financial research, and conversational spreadsheet
-              analysis.
+              My applied projects cover workbook analysis, forecasting,
+              customer behavior, and public-data research. Each project states
+              the question, validates the source data, explains the method, and
+              identifies what the evidence can and cannot support.
             </p>
           </div>
         </div>
@@ -326,8 +327,8 @@
               </h2>
             </div>
             <p>
-              Five applied projects, from unfamiliar spreadsheets to
-              public-company financial data.
+              Three featured analyst case studies and one additional
+              public-data research project.
             </p>
           </div>
           <div class="proj-grid">
@@ -386,32 +387,33 @@
               class="proj-card project-primary"
               aria-labelledby="retail-title"
             >
-              <p class="project-category">Retail · Forecasting &amp; BI</p>
+              <p class="project-category">Featured project · Forecast validation</p>
               <h3 id="retail-title">
-                Retail Demand Forecasting
-                <span>&amp; Inventory Decision Support</span>
+                Retail Sales Forecasting
+                <span>Baseline Comparison &amp; Decision Support</span>
               </h3>
               <p class="project-purpose">
-                Analyze 421,570 weekly sales records across 45 stores to explore
-                demand patterns and support inventory-oriented decisions.
+                Analyze 421,570 weekly sales records and determine which
+                transparent baseline produced lower historical error for a
+                selected store-department series.
               </p>
               <ul class="detail-list">
                 <li>
-                  Transform data with pandas and use SQL/SQLite to compare
-                  stores, departments, holidays, and sales trends.
+                  Validate unique store-department-week keys, retain recorded
+                  negative sales, and leave absent weeks missing.
                 </li>
                 <li>
-                  Engineer 26 features for XGBoost, experiment with Prophet, and
-                  preserve time order through chronological evaluation.
+                  Compare last-week and 52-week seasonal baselines on identical
+                  rolling forecast origins without future-data leakage.
                 </li>
                 <li>
-                  Explain model behavior with SHAP and connect findings to Power
-                  BI reporting and a Streamlit application.
+                  Report MAE, bias, WAPE, horizon error, and a four-week outlook
+                  with explicit decision boundaries.
                 </li>
               </ul>
               <p class="project-tools">
-                <strong>Tools</strong> Python · SQL · SQLite · pandas · XGBoost
-                · Prophet · SHAP · Power BI · Streamlit
+                <strong>Tools</strong> Python · SQL · pandas · NumPy · Power BI
+                · Streamlit · pytest · Google Cloud Run
               </p>
               <div class="project-links">
                 <a
@@ -445,35 +447,34 @@
               class="proj-card project-primary"
               aria-labelledby="churn-title"
             >
-              <p class="project-category">Telecom · Retention analytics</p>
+              <p class="project-category">Featured project · Classification &amp; BI</p>
               <h3 id="churn-title">
-                Customer Churn Prediction
-                <span>&amp; Retention Intelligence</span>
+                Customer Churn Decision Analysis
+                <span>Model Validation &amp; Review Capacity</span>
               </h3>
               <p class="project-purpose">
-                Explore retention patterns in 7,043 telecom customer records
-                through machine-learning comparison, explainability, and visual
-                reporting.
+                Evaluate a transparent model on 7,043 telecom customer records
+                and translate score thresholds into measurable review workload.
               </p>
               <ul class="detail-list">
                 <li>
-                  Prepare contract, tenure, service, and billing data for
-                  exploratory analysis and classification.
+                  Validate customer identifiers, model inputs, and target labels
+                  before creating a reproducible train-holdout split.
                 </li>
                 <li>
-                  Compare models on a stratified 80/20 split: the saved notebook
-                  records ROC-AUC of 0.8225 for Random Forest and 0.8185 for
-                  XGBoost.
+                  Fit preprocessing and logistic regression on training data
+                  only; evaluate ROC-AUC, average precision, calibration, Brier
+                  score, and log loss on 1,409 held-out records.
                 </li>
                 <li>
-                  Communicate customer-level SHAP explanations and
-                  retention-oriented findings through Tableau and an interactive
-                  application.
+                  Show how threshold choices change selected profiles,
+                  historical precision, and recall without claiming causal
+                  intervention effects or recovered revenue.
                 </li>
               </ul>
               <p class="project-tools">
-                <strong>Tools</strong> Python · pandas · scikit-learn · XGBoost
-                · Random Forest · SHAP · Tableau
+                <strong>Tools</strong> Python · SQL · pandas · scikit-learn ·
+                FastAPI · React · Tableau · pytest · Google Cloud Run
               </p>
               <div class="project-links">
                 <a
@@ -504,32 +505,32 @@
               </div>
             </article>
             <article class="proj-card" aria-labelledby="federal-title">
-              <p class="project-category">Public data · Procurement</p>
+              <p class="project-category">Additional work · Public-data research</p>
               <h3 id="federal-title">
-                Federal Contract Intelligence <span>Procurement Analytics</span>
+                Federal Award Record Research <span>Source-Linked Analysis</span>
               </h3>
               <p class="project-purpose">
-                Explore 969 USASpending.gov award records through public-data
-                ingestion, classification, and interactive analysis.
+                Filter, reconcile, and verify 969 USAspending award records in a
+                bounded upper-value research snapshot.
               </p>
               <ul class="detail-list">
                 <li>
-                  Engineer nine features covering award amounts, agency
-                  activity, duration, geography, timing, and recipient history.
+                  Validate unique record identifiers and nonnegative award
+                  amounts before analysis.
                 </li>
                 <li>
-                  Classify definitive contracts versus delivery orders with
-                  Random Forest; saved test predictions yield approximately
-                  0.741 ROC-AUC.
+                  Summarize agency distribution, award-value bands, and
+                  recipient concentration within a filtered selection.
                 </li>
                 <li>
-                  Present SHAP explanations and procurement-oriented analysis in
-                  a React/FastAPI application.
+                  Link comparable records to their USAspending source while
+                  clearly disclosing that the amount-ranked snapshot is not a
+                  representative federal-market sample.
                 </li>
               </ul>
               <p class="project-tools">
-                <strong>Tools</strong> Python · pandas · USASpending.gov API ·
-                Random Forest · SHAP · FastAPI · React
+                <strong>Tools</strong> Python · SQL · pandas · USAspending.gov ·
+                FastAPI · React · pytest · Google Cloud Run
               </p>
               <div class="project-links">
                 <a
@@ -548,52 +549,6 @@
                   ><span class="sr-only">
                     — Federal Contract Intelligence (opens in a new tab)</span
                   ></a
-                >
-              </div>
-            </article>
-            <article class="proj-card" aria-labelledby="orion-title">
-              <p class="project-category">
-                Financial research · Risk indicators
-              </p>
-              <h3 id="orion-title">
-                ORION <span>Corporate Distress Intelligence</span>
-              </h3>
-              <p class="project-purpose">
-                Combine public-company filings and economic signals into
-                explainable indicators, historical views, peer context, and
-                stakeholder briefs.
-              </p>
-              <ul class="detail-list">
-                <li>
-                  Integrate SEC EDGAR/XBRL facts, Form 4 insider filings, and
-                  FRED macroeconomic data through asynchronous APIs.
-                </li>
-                <li>
-                  Examine financial ratios, historical trends, and SIC-based
-                  peer comparisons for financial research.
-                </li>
-                <li>
-                  Generate four brief formats for executive, consultant,
-                  investor, and board audiences.
-                </li>
-              </ul>
-              <p class="project-tools">
-                <strong>Tools</strong> Python · FastAPI · SEC EDGAR / XBRL ·
-                Financial Ratios · Async APIs · React · LangGraph
-              </p>
-              <div class="project-links">
-                <a
-                  href="https://orion-frontend-1027936947898.us-central1.run.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Live Demo <span aria-hidden="true">↗</span
-                  ><span class="sr-only"> — ORION (opens in a new tab)</span></a
-                ><a
-                  href="https://github.com/SanjaySarella/ORION"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub <span aria-hidden="true">↗</span
-                  ><span class="sr-only"> — ORION (opens in a new tab)</span></a
                 >
               </div>
             </article>
